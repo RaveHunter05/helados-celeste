@@ -13,7 +13,7 @@ export default function Individual() {
 	<>
 		<div className="h-screen">
 		<Header/>
-		<HiOutlineArrowLeft className="text-4xl text-gray-600 ml-2 my-4" onClick={goBack}/>
+		<HiOutlineArrowLeft className="text-4xl text-gray-600 ml-2 my-4 cursor-pointer" onClick={goBack}/>
 
 		<IndividualProduct/>
 		</div>

@@ -1,58 +1,22 @@
+import utils from '@/utils'
 import {useRouter} from 'next/router'
 
 const Gallery = () => {
 	const router = useRouter()
-	const goToItem = () => {
-		router.push('individual')	
+
+	const listOfCategories = utils.listOfCategories;
+	const goToItem = (path) => {
+		router.push(`individual/${path}`)	
 	}
 	return(
 		<>
 
-		<div className="grid grid-cols-2 md:grid-cols-4 gap-4 px-4 pb-4">
-		<div className="grid gap-4">
-		<div className="cursor-pointer" onClick={goToItem}>
-		<img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image.jpg" alt="" />
-		</div>
-		<div>
-		<img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-1.jpg" alt="" />
-		</div>
-		<div>
-		<img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-2.jpg" alt="" />
-		</div>
-		</div>
-		<div className="grid gap-4">
-		<div>
-		<img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-3.jpg" alt="" />
-		</div>
-		<div>
-		<img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-4.jpg" alt="" />
-		</div>
-		<div>
-		<img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-5.jpg" alt="" />
-		</div>
-		</div>
-		<div className="grid gap-4">
-		<div>
-		<img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-6.jpg" alt="" />
-		</div>
-		<div>
-		<img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-7.jpg" alt="" />
-		</div>
-		<div>
-		<img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-8.jpg" alt="" />
-		</div>
-		</div>
-		<div className="grid gap-4">
-		<div>
-		<img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-9.jpg" alt="" />
-		</div>
-		<div>
-		<img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg" alt="" />
-		</div>
-		<div>
-		<img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg" alt="" />
-		</div>
-		</div>
+
+		<div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+		{listOfCategories.map((category, key) => (<div className="flex items-center justify-center" key={key}>
+			<img onClick={() => goToItem(category.value)} className="h-auto max-w-full rounded-lg cursor-pointer" src={category.photo} />
+			</div>))}
+
 		</div>
 		</>
 	)
